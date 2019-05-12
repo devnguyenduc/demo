@@ -1,0 +1,15 @@
+{
+    "id":"",
+    "title":"",
+    "describes":"",
+    "url":"",
+    "content":"",
+    "date":{
+        "year": 2019,
+        "month": 4,
+        "day" : 15,
+        "hours" : 14,
+        "minutes": 14,
+        "seconds": 30
+    }
+}

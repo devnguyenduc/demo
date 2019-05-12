@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Heaven Luxury Admin</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- css -->
+  <!-- javascript -->
+
+  <!-- SimpleMDE CSS, FontAwesome and SimpleMDE JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+  <!-- MarkJax = Markdown + MathJax -->
+  <script type="text/javascript" src="https://codeassign.github.io/markjax/dist/markjax.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <% include navbar %>
+
+  <!-- Function Menu -->
+  <div class="container-fluid mt-3">
+    <div class="row">
+      <!--  -->
+      <div class="col-3">
+        <div class="list-group">
+          <button class="btn list-group-item list-group-item-action" data-toggle="collapse" data-target="#create_post">
+            Tạo bài viết mới
+          </button>
+          <button class="btn list-group-item list-group-item-action" href="/admin/source">
+            Xem tài nguyên
+          </button>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn list-group-item list-group-item-action" data-toggle="modal"
+            data-target="#upload_source">
+            Upload tài nguyên
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="upload_source" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+
+                <div class="modal-header">
+                  <h5 class="modal-title">Chọn File Upload tại đây</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="/admin/source/upload" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="file_upload[]" multiple>
+                    <input type="submit" class="d-none" value="Upload Image" id="upload" name="submit">
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" onclick="upload.click()">Upload</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <script>
+            $('#exampleModal').on('show.bs.modal', event => {
+              var button = $(event.relatedTarget);
+              var modal = $(this);
+              // Use above variables to manipulate the DOM
+
+            });
+          </script>
+        </div>
+      </div>
+      <!-- Toggle Page -->
+      <div class="col-7 p-2 border" id="test">
+        <div class="collapse" id="create_post">
+          <form action="/admin/function/create_new_post.py" method="POST">
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Tiêu đề bài viết:</span>
+              </div>
+              <input type="text" class="form-control" name="title" placeholder="Tên bài viết">
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Chuyên mục:</span>
+              </div>
+              <input type="text" class="form-control" name="category" placeholder="Chuyên mục bài viết">
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Mô tả bài viết:</span>
+              </div>
+              <input type="text" class="form-control" name="describes" placeholder="Mô tả ngắn gọn">
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Id:</span>
+              </div>
+              <input type="text" class="form-control" name="id"
+                placeholder="Id được viết theo tiêu đề bài viết không dấu theo kiểu sau xin-chao">
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Tag:</span>
+              </div>
+              <input type="text" class="form-control" name="tag" placeholder="#tag1,#tag2">
+            </div>
+
+            <div class="form-group">
+              <label for="">Viết bài:</label>
+              <textarea class="form-control" name="content" id="create_post_input"></textarea>
+            </div>
+            <button type="submit" class="btn btn-info">Đăng bài</button>
+          </form>
+        </div>
+      </div>
+      <!--  -->
+      <div class="col-2"></div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <script src="js/simplemde.js"></script>
+  <script src="js/admin_function.js"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
